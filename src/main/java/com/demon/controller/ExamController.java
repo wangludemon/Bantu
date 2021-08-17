@@ -1,5 +1,6 @@
 package com.demon.controller;
 
+import com.demon.mapper.ExamResultMapper;
 import com.demon.pojo.ExamResult;
 import com.demon.pojo.MCQs;
 import com.demon.pojo.Question;
@@ -24,6 +25,9 @@ public class ExamController {
 
     @Autowired
     MCQsService mcQsService;
+
+    @Autowired
+    ExamResultMapper examResultMapper;
 
     private List<Question> single;
     private List<Question> multi;
@@ -54,6 +58,7 @@ public class ExamController {
         model.addAttribute("singleQuestion", single);
         model.addAttribute("multiQuestion", multi);
 
+        String mcqs_id = "";
         int correct = 0;
 
         //单选
@@ -69,6 +74,9 @@ public class ExamController {
                 correct++;
             else {
                 //加入错题库
+
+                mcqs_id += (String.valueOf(id)+",");
+
                 String username = request.getSession().getAttribute("loginUser").toString();
                 mcQsService.addMCQs(new MCQs(username, id, answer));
             }
@@ -90,6 +98,7 @@ public class ExamController {
             if (a.equals(multi.get(i).getAnswer()))
                 correct++;
             else {
+                mcqs_id += (String.valueOf(id)+",");
                 String username = request.getSession().getAttribute("loginUser").toString();
                 mcQsService.addMCQs(new MCQs(username, id, a));
             }
@@ -102,6 +111,10 @@ public class ExamController {
 
         model.addAttribute("result", String.valueOf(correct));
         int total = single.size() + multi.size();
+        examResult.setGrade(correct);
+        examResult.setMcqs_id(mcqs_id);
+        examResult.setEnd_time(new Date());
+        examResultMapper.addExamResult(examResult);
 
         model.addAttribute("total",String.valueOf(total));
         return "StudentPage/Exam/examResult.html";
