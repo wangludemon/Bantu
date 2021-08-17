@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <title>题库</title>
+    <script type="text/javascript">
+
+        function checkUsername() {
+            var usernameDom = document.getElementById("username");
+            var username = usernameDom.value;
+            var flag = true;
+            var msg1 = document.getElementById("msg_username");
+            if (username.length < 8 || username.length > 20) {
+                msg1.innerHTML = "用户名不合法！";
+                return false;
+            } else {
+                msg1.innerHTML = "";
+                return true;
+            }
+        }
+        function checkPassword() {
+            //   必须由字母，数字，下划线组成，长度6-15
+            var patt = /^\w{6,15}$/;
+
+            var passwordDom = document.getElementById("password");
+            var password = passwordDom.value;
+            var msg2 = document.getElementById("msg_password");
+            if (patt.test(password)) {
+                msg2.innerHTML = "";
+                return true;
+            }else{
+                msg2.innerHTML = "密码不合法！须包含字母，数字，下划线"
+                return false;
+            }
+        }
+        function checkConfirmPassword() {
+            var passwordDom = document.getElementById("password");
+            var password = passwordDom.value;
+            var confirmPasswordDom = document.getElementById("confirmPassword");
+            var confirmPassword = confirmPasswordDom.value;
+
+            var msg3 = document.getElementById("msg_confirm");
+            if (password == confirmPassword) {
+                msg3.innerHTML = "";
+                return true;
+            }else{
+                msg3.innerHTML = "确认密码不一致！";
+                return false;
+            }
+        }
+
+        function onclickFun() {
+            var flag = true;
+            flag = checkUsername() && flag;
+            flag = checkPassword() && flag;
+            flag = checkConfirmPassword() && flag;
+
+            return flag;
+
+        }
+    </script>
+</head>
+
+<body>
+<!--顶部栏-->
+<div th:insert="~{index::index_top_bar}"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-7">
+                        <h2>用户注册</h2>
+                        <form th:action="@{/UserRegister}"  th:onsubmit="return onclickFun()">
+                            <label >用户名：</label>
+<!--                            <span style="color: red;" th:text="${register_username}" th:if="${not #strings.isEmpty(register_username)}"></span>-->
+                            <span style="color: red;" id="msg_username"></span>
+                            <input type="text" name="RegisterUsername"  id="username" class="form-control" placeholder="用户名长度：8~20字符">
+
+                            <label >密码：</label>
+                            <span style="color: red;" id="msg_password"></span>
+<!--                            <span style="color: red;" th:text="${register_password}" th:if="${not #strings.isEmpty(register_password)}"></span>-->
+
+                            <input type="password" name="RegisterPassword" id="password" class="form-control" placeholder="密码长度：6~15字符">
+
+                            <label >确认密码：</label>
+                            <span style="color: red;" id="msg_confirm"></span>
+<!--                            <span style="color: red;" th:text="${register_confirm}" th:if="${not #strings.isEmpty(register_confirm)}"></span>-->
+                            <input type="password" name="ConfirmPassword" id="confirmPassword" class="form-control" placeholder="请再次确认密码">
+
+                            <label >邮箱：</label>
+                            <input type="email" name="RegisterEmail" class="form-control" placeholder="例如：xxx@qq.com">
+                            <label >您的身份：</label>
+                            <div class="checkbox">
+                                <input type="radio" name="identity" checked="checked" value="student">学生
+                                <input type="radio" name="identity" value="teacher">教师
+                            </div>
+                            <button class="btn btn-lg btn-primary btn-block" type="submit"
+                                style="background-color: #555;">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

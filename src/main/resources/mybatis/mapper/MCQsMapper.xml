@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace很重要别写错-->
+<mapper namespace="com.demon.mapper.MCQsMapper">
+
+    <select id="queryMCQsById" resultType="MCQs">
+        select * from mcqs where username = #{username}
+    </select>
+
+    <select id="queryMCQsByPrimaryKey" resultType="MCQs">
+        select * from mcqs where username = #{username} and q_id = #{q_id}
+    </select>
+
+    <insert id="insertMCQs" parameterType="MCQs">
+        insert into mcqs (username,q_id,answer)
+        values (#{username},#{q_id},#{answer})
+    </insert>
+
+    <update id="updateMCQs" parameterType="MCQs">
+        update mcqs set
+        answer = #{answer}
+        where username = #{username} and  q_id = #{q_id}
+    </update>
+
+    <delete id="deleteMCQs">
+        delete from mcqs where username = #{username} and q_id = #{q_id}
+    </delete>
+
+
+
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace很重要别写错-->
+<mapper namespace="com.demon.mapper.ExamPaperMapper">
+
+    <select id="queryExamPaper" resultType="ExamPaper">
+        select * from exampaper
+    </select>
+
+    <select id="queryExamPaperById" resultType="ExamPaper">
+        select * from exampaper where p_id = #{p_id}
+    </select>
+
+</mapper>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{css/examPage.css}">
+    <script th:src="@{js/jquey.min.js}"></script>
+    <script th:src="@{js/exam.js}"></script>
+    <title>题库</title>
+
+</head>
+
+
+<body>
+<nav class="navbar navbar-default"></nav>
+<div th:insert="~{StudentPage/userpage::user_top_bar}"></div>
+
+<div class="container">
+    <div class="row">
+        <!-- form -->
+        <form th:action="@{/examResult.html}">
+            <div class="col-md-9">
+                <div class="panel panel-default">
+                    <div class="panel-heading">一、单选题</div>
+                    <div class="panel-body text-content">
+
+                        <ul id="single_question">
+                            <!-- 题目 -->
+                            <li   th:each="q,qStatus:${singleQuestion}" th:id="'q_0_'+${qStatus.count}">
+                                <div class="text-content-tt">
+                                    <i th:text="${qStatus.count}">1</i>
+                                    <span>(1分)</span>
+                                    <span
+                                            th:text="${q.getQ_text()}">销售者和采购者都是企业，从订购到结算开票的全部交易过程都用网络实现的电子商务类型是（　）。</span>
+
+                                </div>
+
+                                <!-- 选项列表 -->
+                                <ul class="option">
+                                    <li id="1">
+                                        <input type="radio" th:name="${q.getQ_id()}" value="A" required="required" οnchange="sele()">
+
+                                        <span>
+                                                A.
+                                                <span th:text="${q.getQ_A()}"> 企业对消费者（B2C）</span>
+                                            </span>
+                                    </li>
+                                    <li id="2">
+                                        <input type="radio" th:name="${q.getQ_id()}" value="B" required="required">
+
+                                        <span>
+                                                B.
+                                                <span th:text="${q.getQ_B()}"> 选项二</span>
+                                            </span>
+                                    </li>
+                                    <li id="3">
+                                        <input type="radio" th:name="${q.getQ_id()}" value="C" required="required">
+
+                                        <span>
+                                                C.
+                                                <span th:text="${q.getQ_C()}"> 选项三</span>
+                                            </span>
+                                    </li>
+                                    <li id="4">
+                                        <input type="radio" th:name="${q.getQ_id()}" value="D" required="required">
+
+                                        <span>
+                                                D.
+                                                <span th:text="${q.getQ_D()}"> 选项四</span>
+                                            </span>
+                                    </li>
+                                </ul>
+                                <!-- 结束选项列表 -->
+                            </li>
+                            <!-- 结束一道题目 -->
+
+
+                        </ul>
+                        <!-- 结束单选题列表 -->
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">二、多选题</div>
+                    <div class="panel-body text-content">
+                        <ul id="multi_question">
+                            <!-- 题目 -->
+                            <li  th:each="mq,mqStatus:${multiQuestion}" th:id="'q_1_'+${mqStatus.count}">
+                                <div class="text-content-tt">
+                                    <i th:text="${mqStatus.count}">1</i>
+                                    <span>(1分)</span>
+                                    <span
+                                            th:text="${mq.getQ_text()}">销售者和采购者都是企业，从订购到结算开票的全部交易过程都用网络实现的电子商务类型是（　）。</span>
+
+                                </div>
+
+                                <!--选项列表  -->
+                                <ul class="option">
+                                    <li>
+                                        <input type="checkbox" th:name="${mq.getQ_id()}" value="A">
+
+                                        <span>
+                                                A.
+                                                <span th:text="${mq.getQ_A()}"></span>
+                                            </span>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" th:name="${mq.getQ_id()}" value="B">
+
+                                        <span>
+                                                B.
+                                                <span th:text="${mq.getQ_B()}"></span>
+                                            </span>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" th:name="${mq.getQ_id()}" value="C">
+
+                                        <span>
+                                                C.
+                                                <span th:text="${mq.getQ_C()}"></span>
+                                            </span>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" th:name="${mq.getQ_id()}" value="D">
+
+                                        <span>
+                                                D.
+                                                <span th:text="${mq.getQ_D()}"></span>
+                                            </span>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" th:name="${mq.getQ_id()}" value="E">
+
+                                        <span>
+                                                E.
+                                                <span th:text="${mq.getQ_E()}"></span>
+                                            </span>
+                                    </li>
+                                </ul>
+                                <!-- 结束选项列表 -->
+                            </li>
+                            <!-- 结束一道题目 -->
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-4">
+                        <p class="test_time">
+                            <b class="count">1:00:00</b>
+                        </p>
+                    </div>
+                    <div class="col-md-offset-10">
+
+                        <button href="#" class="btn btn-success">交卷</button>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- over footer -->
+        </form>
+
+        <div class="col-md-3">
+            <div class="panel panel-info col-md-3" style="position: fixed;">
+                <div class="panel-heading">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p style="line-height: 45px; text-align: center;">答题卡</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="test_time">
+                                <b class="count">1:00:00</b>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="panel-body" style="padding: 20px 0;">
+                    <div class="row" style="margin-bottom: 15px; border-bottom: solid #ddd;">
+                        <!--单选题标题 -->
+                        <div class="col-md-6" style="text-align: center;"><span
+                                style="font-weight: bold;">单选题</span> </div>
+                        <div class="col-md-6" style="text-align: center;"><span
+                                style="text-align: center;">共30题</span> </div>
+                    </div>
+                    <div class="rt_content_nr answerSheet row">
+                        <ul>
+
+                            <li th:each="q,qStatus:${singleQuestion}">
+                                <a th:href="'#q_0_'+${qStatus.count}" >
+                                    <span th:text="${qStatus.count}"></span>
+                                </a>
+                            </li>
+
+
+
+
+
+                        </ul>
+                    </div>
+
+                    <div class="row" style="margin-bottom: 15px; margin-top: 50px; border-bottom: solid #ddd;">
+                        <!--多选题标题 -->
+                        <div class="col-md-6" style="text-align: center;"><span
+                                style="font-weight: bold;">多选题</span> </div>
+                        <div class="col-md-6" style="text-align: center;"><span
+                                style="text-align: center;">共30题</span> </div>
+                    </div>
+
+                    <div class="rt_content_nr answerSheet row">
+                        <ul th:each="mq,mqStatus:${multiQuestion}">
+
+                            <li>
+                                <a th:href="'#q_1_'+${mqStatus.count}" >
+                                <span th:text="${mqStatus.count}"></span>
+                                 </a>
+                            </li>
+
+
+
+
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>
+
+
+</body>
+
+</html>

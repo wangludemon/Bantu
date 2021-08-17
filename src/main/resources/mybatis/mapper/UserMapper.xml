@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace很重要别写错-->
+<mapper namespace="com.demon.mapper.UserMapper">
+    <select id="queryUserList" resultType="User">
+        select * from user
+    </select>
+    <select id="queryUserById" resultType="User">
+        select * from user where username = #{username}
+    </select>
+    <insert id="addUser"  parameterType="User" >
+        insert into user(username,password,email,identity) values (#{username},#{password},#{email},#{identity})
+    </insert>
+
+</mapper>

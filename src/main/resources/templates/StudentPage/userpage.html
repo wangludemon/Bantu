@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{bootstrap/css/bootstrap.min.css}">
+    <title>题库</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-default"></nav>
+    <nav class="navbar navbar-default navbar-fixed-top" th:fragment = "user_top_bar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+                <a class="navbar-brand" href="#">题库</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="Home"><a href="/">首页</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a th:href="@{/main.html}"><span class="glyphicon glyphicon-user"></span> 主页</a></li>
+                    <li><a th:href="@{/quit}"><span class="glyphicon glyphicon-log-in"></span> 退出</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+        <!--/.container-fluid -->
+    </nav>
+
+    <div class="container-fluid" style="overflow: hidden;">
+        <div class="row">
+            <div class="col-md-2 left">
+                <div class="navbar-default" th:fragment = "user_navbar">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="active"><a th:href="@{/main.html}">个人主页</a></li>
+                    </ul>
+                    <br>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li style="text-align: center;">
+                            <a th:href="@{/selectUnit.html}"><span class="glyphicon glyphicon-leaf"></span> 练习</a>
+                        </li>
+                        <li style="text-align: center;">
+                            <a th:href="@{/enterExamNumber.html}"><span class="glyphicon glyphicon-fire"></span> 考试</a>
+                        </li>
+                        <li style="text-align: center;">
+                            <a th:href="@{/MCQsLibrary.html}"><span class="glyphicon glyphicon-star"></span> 错题库</a>
+                        </li>
+                    </ul>
+                    <br>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="#">设置</a></li>
+                        <li><a href="#">帮助</a></li>
+                    </ul>
+                    
+                </div>
+
+            </div>
+            <div class="col-md-offset-2 col-md-6">
+                <div class="jumbotron">
+                    <h1>Hello, world!</h1>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

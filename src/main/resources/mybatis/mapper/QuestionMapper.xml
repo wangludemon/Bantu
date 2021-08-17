@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace很重要别写错-->
+<mapper namespace="com.demon.mapper.QuestionMapper">
+    <select id="queryQuestion" resultType="Question">
+        select * from question
+    </select>
+
+    <select id="queryQuestionById" resultType="Question">
+        select * from question where q_id = #{q_id}
+    </select>
+
+    <select id="queryQuestionBySubject" resultType="Question">
+        select * from question where subject = #{subject}
+    </select>
+
+    <select id="queryQuestionUnit" resultType="Integer">
+        select distinct unit from question
+    </select>
+
+    <select id="queryQuestionSubject" resultType="String">
+        select distinct subject from question
+    </select>
+
+    <!-- 使用foreach接收list参数 -->
+    <select id="queryQuestionByIdList" resultType="Question">
+        select * from question
+        <foreach collection="list" item="item" open="where q_id in(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+</mapper>

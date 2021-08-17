@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{bootstrap/css/bootstrap.min.css}">
+    <title>题库</title>
+</head>
+
+<body>
+<!--顶部栏-->
+<nav class="navbar navbar-default"></nav>
+<div th:insert="~{StudentPage/userpage::user_top_bar}"></div>
+
+
+
+<div class="container-fluid" style="overflow: hidden;">
+    <div class="row">
+        <div class="col-md-2 left">
+        <!--侧边栏-->
+            <div th:insert="~{StudentPage/userpage::user_navbar}"></div>
+        </div>
+        <div class="col-md-offset-2">
+            <h1 class="page-header"><span class="glyphicon glyphicon-leaf"></span> 练习</h1>
+            <div class="row">
+
+                <form th:action="@{/exercise.html}">
+
+                    <div class="col-md-2">
+
+
+                        <select class="form-control" name="subject" >
+
+                            <option th:each = "s:${subject}" th:value="${s}" th:text="${s}"></option>
+
+                        </select>
+                    </div>
+
+                   <div class="col-md-2">
+                      <select class="form-control" name="unit" >
+
+                         <option th:each = "u:${unit}" th:value="${u}" th:text="${u}"></option>
+
+                     </select>
+
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-primary">开始</button>
+                    </div>
+
+                </form>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{css/exercisePage.css}">
+    <title>题库</title>
+</head>
+
+
+<body>
+<nav class="navbar navbar-default"></nav>
+<div th:insert="~{StudentPage/userpage::user_top_bar}"></div>
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-offset-1 col-md-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">一、单选题</div>
+                <div class="panel-body text-content">
+                    <ul>
+                        <li th:each="q,qStatus:${singleQuestion}">
+                            <div class="text-content-tt">
+                                <i th:text="${qStatus.count}">1</i>
+                                <span>(1分)</span>
+                                <span
+                                        th:text="${q.getQ_text()}">销售者和采购者都是企业，从订购到结算开票的全部交易过程都用网络实现的电子商务类型是（　）。</span>
+
+                            </div>
+
+                            <ul class="option">
+                                <li>
+
+
+                                        <span>
+                                            A.
+                                            <span th:text="${q.getQ_A()}"> 企业对消费者（B2C）</span>
+                                        </span>
+                                </li>
+                                <li>
+
+
+                                        <span>
+                                            B.
+                                            <span th:text="${q.getQ_B()}"> 选项二</span>
+                                        </span>
+                                </li>
+                                <li>
+
+
+                                        <span>
+                                            C.
+                                            <span th:text="${q.getQ_C()}"> 选项三</span>
+                                        </span>
+                                </li>
+                                <li>
+
+                                        <span>
+                                            D.
+                                            <span th:text="${q.getQ_D()}"> 选项四</span>
+                                        </span>
+                                </li>
+                                <li>
+
+                                        <span>
+                                            你的答案：
+                                            <span th:text="${singleAnswer[qStatus.index]}"> D</span>
+                                            <span th:if="${q.getAnswer eq singleAnswer[qStatus.index]}" class="glyphicon glyphicon-ok" style="color: green;"> </span>
+                                            <!-- 	glyphicon glyphicon-remove -->
+                                            <span th:unless="${q.getAnswer eq singleAnswer[qStatus.index]}" class="glyphicon glyphicon-remove" style="color: red;"> </span>
+                                            正确答案：
+                                            <span th:text="${q.getAnswer}">D</span>
+                                        </span>
+                                </li>
+                            </ul>
+                    </ul>
+
+                    </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">二、多选题</div>
+                <div class="panel-body text-content">
+                    <ul>
+                        <li th:each="mq,mqStatus:${multiQuestion}">
+                            <div class="text-content-tt">
+                                <i th:text="${mqStatus.count}">1</i>
+                                <span>(1分)</span>
+                                <span
+                                        th:text="${mq.getQ_text()}">销售者和采购者都是企业，从订购到结算开票的全部交易过程都用网络实现的电子商务类型是（　）。</span>
+
+                            </div>
+
+                            <ul class="option">
+                                <li>
+
+
+                                        <span>
+                                            A.
+                                            <span th:text="${mq.getQ_A()}"></span>
+                                        </span>
+                                </li>
+                                <li>
+
+
+                                        <span>
+                                            B.
+                                            <span th:text="${mq.getQ_B()}"></span>
+                                        </span>
+                                </li>
+                                <li>
+
+
+                                        <span>
+                                            C.
+                                            <span th:text="${mq.getQ_C()}"></span>
+                                        </span>
+                                </li>
+                                <li>
+
+
+                                        <span>
+                                            D.
+                                            <span th:text="${mq.getQ_D()}"></span>
+                                        </span>
+                                </li>
+                                <li>
+
+
+                                        <span>
+                                            E.
+                                            <span th:text="${mq.getQ_E()}"></span>
+                                        </span>
+                                </li>
+                                <li>
+
+
+                                        <span>
+                                            你的答案：
+                                            <span th:text="${multiAnswer[mqStatus.index]}"></span>
+                                            <span th:if="${mq.getAnswer eq multiAnswer[mqStatus.index]}" class="glyphicon glyphicon-ok" style="color: green;"> </span>
+                                            <!-- 	glyphicon glyphicon-remove -->
+                                            <span th:unless="${mq.getAnswer eq multiAnswer[mqStatus.index]}" class="glyphicon glyphicon-remove" style="color: red;"> </span>
+                                            正确答案：
+                                            <span th:text="${mq.getAnswer}"></span>
+                                        </span>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer">
+
+        <div class="col-md-offset-10">
+            <a th:href="@{/main.html}" class="btn btn-success">返回主页</a>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+
+</body>
+
+</html>

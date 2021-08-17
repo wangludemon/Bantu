@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{css/exercisePage.css}">
+    <title>题库</title>
+</head>
+<style>
+    .QuestionBlock {
+        margin-top: 10%;
+
+    }
+</style>
+
+<body>
+<!--顶部栏-->
+<nav class="navbar navbar-default"></nav>
+<div th:insert="~{StudentPage/userpage::user_top_bar}"></div>
+
+<div class="container-fluid" style="overflow: hidden;">
+    <div class="row">
+        <div class="col-md-2 left">
+            <!--侧边栏-->
+            <div th:insert="~{StudentPage/userpage::user_navbar}"></div>
+
+        </div>
+        <div class="col-md-offset-2">
+            <form th:action="@{/redoResult.html}">
+                <div class="QuestionBlock">
+
+                    <div class="text-content-tt">
+                        <i>!</i>
+                        <input type="hidden" name="q_id" th:value="${q.getQ_id}">
+                        <span th:text="${q.getQ_text()}"></span>
+
+                    </div>
+
+                    <!--  单选题   -->
+                    <div th:if="${#strings.isEmpty(q.getQ_E)}">
+                        <!-- 选项列表 -->
+                        <ul class="option" style="padding-left: 10%;">
+                            <li>
+                                <input type="radio" th:name="${q.getQ_id()}" value="A" required="required">
+
+                                <span>
+                                    A.
+                                    <span th:text="${q.getQ_A()}"> </span>
+                                </span>
+                            </li>
+                            <li>
+                                <input type="radio" th:name="${q.getQ_id()}" value="B" required="required">
+
+                                <span>
+                                    B.
+                                    <span th:text="${q.getQ_B()}"> </span>
+                                </span>
+                            </li>
+                            <li>
+                                <input type="radio" th:name="${q.getQ_id()}" value="C" required="required">
+
+                                <span>
+                                    C.
+                                    <span th:text="${q.getQ_C()}"> </span>
+                                </span>
+                            </li>
+                            <li>
+                                <input type="radio" th:name="${q.getQ_id()}" value="D" required="required">
+
+                                <span>
+                                    D.
+                                    <span th:text="${q.getQ_D()}"> </span>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--  多选题    -->
+                    <div th:if="${not #strings.isEmpty(q.getQ_E)}">
+                        <!--选项列表  -->
+                        <ul class="option" style="padding-left: 10%;">
+                            <li>
+                                <input type="checkbox" th:name="${q.getQ_id()}" value="A">
+
+                                <span>
+                                                A.
+                                                <span th:text="${q.getQ_A()}"></span>
+                                            </span>
+                            </li>
+                            <li>
+                                <input type="checkbox" th:name="${q.getQ_id()}" value="B">
+
+                                <span>
+                                                B.
+                                                <span th:text="${q.getQ_B()}"></span>
+                                            </span>
+                            </li>
+                            <li>
+                                <input type="checkbox" th:name="${q.getQ_id()}" value="C">
+
+                                <span>
+                                                C.
+                                                <span th:text="${q.getQ_C()}"></span>
+                                            </span>
+                            </li>
+                            <li>
+                                <input type="checkbox" th:name="${q.getQ_id()}" value="D">
+
+                                <span>
+                                                D.
+                                                <span th:text="${q.getQ_D()}"></span>
+                                            </span>
+                            </li>
+                            <li>
+                                <input type="checkbox" th:name="${q.getQ_id()}" value="E">
+
+                                <span>
+                                                E.
+                                                <span th:text="${q.getQ_E()}"></span>
+                                            </span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-offset-8">
+                            <button class="btn btn-primary">提交</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+
+    </div>
+</div>
+
+</body>
+
+</html>
