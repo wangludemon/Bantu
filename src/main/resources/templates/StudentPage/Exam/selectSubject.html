@@ -8,7 +8,6 @@
     <title>题库</title>
 </head>
 
-<!--输入序列号界面-->
 <body>
 <!--顶部栏-->
 <nav class="navbar navbar-default"></nav>
@@ -23,20 +22,27 @@
             <div th:insert="~{StudentPage/userpage::user_navbar}"></div>
         </div>
         <div class="col-md-offset-2">
-            <h1 class="page-header"><span class="glyphicon glyphicon-fire"></span> 请输入试卷编号</h1>
+            <h1 class="page-header"><span class="glyphicon glyphicon-certificate"></span> 智能组卷</h1>
             <div class="row">
 
-                <form th:action="@{/exam.html}">
-                <div class="col-md-2">
-                    <input type="text" class="form-control" name="exam_number" required="required">
+                <form th:action="@{/MockExam.html}">
 
-                </div>
-                    <div class="col-md-3">
-                        <button class="btn btn-primary ">开始</button>
+                    <div class="col-md-2">
+
+
+                        <select class="form-control" name="subject" >
+
+                            <option th:each = "s:${subject}" th:value="${s}" th:text="${s}"></option>
+
+                        </select>
                     </div>
 
+                    <div class="col-md-2">
+                        <button class="btn btn-primary">开始</button>
+                    </div>
 
                 </form>
+
 
 
             </div>

@@ -4,13 +4,13 @@ import java.util.Date;
 
 public class ExamResult {
     String username;
-    int p_id;
+    String p_id;
     double grade;
     String mcqs_id;
     Date start_time;
     Date end_time;
 
-    public ExamResult(String username, int p_id, double grade, String mcqs_id, Date start_time, Date end_time) {
+    public ExamResult(String username, String p_id, double grade, String mcqs_id, Date start_time, Date end_time) {
         this.username = username;
         this.p_id = p_id;
         this.grade = grade;
@@ -24,9 +24,9 @@ public class ExamResult {
     public String toString() {
         return "ExamResult{" +
                 "username='" + username + '\'' +
-                ", p_id=" + p_id +
+                ", p_id='" + p_id + '\'' +
                 ", grade=" + grade +
-                ", mcqs_id=" + mcqs_id +
+                ", mcqs_id='" + mcqs_id + '\'' +
                 ", start_time=" + start_time +
                 ", end_time=" + end_time +
                 '}';
@@ -40,11 +40,11 @@ public class ExamResult {
         this.username = username;
     }
 
-    public int getP_id() {
+    public String getP_id() {
         return p_id;
     }
 
-    public void setP_id(int p_id) {
+    public void setP_id(String p_id) {
         this.p_id = p_id;
     }
 

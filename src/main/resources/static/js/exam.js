@@ -33,7 +33,7 @@
  $(function(){
              $(":radio ").click(function(){
 
-               alert($(this).parent().parent().parent().attr("id"));
+               //alert($(this).parent().parent().parent().attr("id"));
 
               var examId = $(this).parent().parent().parent().attr("id");
 

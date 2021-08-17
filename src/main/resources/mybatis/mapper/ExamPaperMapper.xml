@@ -13,4 +13,9 @@
         select * from exampaper where p_id = #{p_id}
     </select>
 
+    <insert id="addExamPaper" parameterType="ExamPaper">
+        insert into exampaper (p_id,create_time,content)
+        values (#{p_id},#{create_time},#{content})
+    </insert>
+
 </mapper>

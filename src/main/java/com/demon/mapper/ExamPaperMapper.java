@@ -12,5 +12,7 @@ import java.util.List;
 public interface ExamPaperMapper {
     List<ExamPaper> queryExamPaper();
 
-    ExamPaper queryExamPaperById(int p_id);
+    ExamPaper queryExamPaperById(String p_id);
+
+    int addExamPaper(ExamPaper examPaper);
 }

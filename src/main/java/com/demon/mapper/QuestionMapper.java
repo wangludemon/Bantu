@@ -16,6 +16,7 @@ public interface QuestionMapper {
     //根据题目ID获取题目
     Question queryQuestionById(int q_id);
 
+    //Id的List
     List<Question> queryQuestionByIdList(List<Integer> q_id_List);
 
     //根据学科获取题目

@@ -21,6 +21,8 @@
     <div class="row">
         <!-- form -->
         <form th:action="@{/examResult.html}">
+            <input type="hidden" th:value="${p_id}" name="p_id">
+            <input type="hidden" th:value="${nowTime}" name="nowTime">
             <div class="col-md-9">
                 <div class="panel panel-default">
                     <div class="panel-heading">一、单选题</div>

@@ -25,6 +25,10 @@ public class ExamService {
         return questionMapper.queryQuestionBySubject(subject);
     }
 
+    public List<Question> getQuestionByIdList(List<Integer> q_id_List){
+        return questionMapper.queryQuestionByIdList(q_id_List);
+    }
+
     //获得对应科目，组别的题组
     public List<Question> getGroupQuestion(String subject, int unit){
         List<Question> temp = questionMapper.queryQuestionBySubject(subject);
@@ -111,14 +115,11 @@ public class ExamService {
         System.out.println(newStr);
         return Integer.parseInt(newStr);
     }
-    public List<Question> startExam(String numStr){
-
-        return getExamQuestions(transformNumber(numStr));
-    }
 
 
-    //获取一套试卷的题目
-    public List<Question> getExamQuestions(int p_id){
+
+    //根据试卷序列号（试卷Id）获取一套试卷的题目
+    public List<Question> getExamQuestions(String p_id){
         ExamPaper examPaper = examPaperMapper.queryExamPaperById(p_id);
         String content = examPaper.getContent();
         String temp[];
@@ -135,6 +136,11 @@ public class ExamService {
 
         return q;
 
+    }
+
+    //添加试卷
+    public void addExamPaper(ExamPaper examPaper){
+        examPaperMapper.addExamPaper(examPaper);
     }
 
 }

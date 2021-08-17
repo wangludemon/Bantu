@@ -13,6 +13,8 @@
             var username = usernameDom.value;
             var flag = true;
             var msg1 = document.getElementById("msg_username");
+            //校验登录名：只能输入5-20个以字母开头、可带数字、“_”、“.”的字串
+            //var patrn=/^[a-zA-Z]{1}([a-zA-Z0-9]|[._]){4,19}$/;
             if (username.length < 8 || username.length > 20) {
                 msg1.innerHTML = "用户名不合法！";
                 return false;
@@ -22,7 +24,7 @@
             }
         }
         function checkPassword() {
-            //   必须由字母，数字，下划线组成，长度6-15
+            //   校验密码：只能输入6-20个字母、数字、下划线
             var patt = /^\w{6,15}$/;
 
             var passwordDom = document.getElementById("password");
@@ -32,7 +34,7 @@
                 msg2.innerHTML = "";
                 return true;
             }else{
-                msg2.innerHTML = "密码不合法！须包含字母，数字，下划线"
+                msg2.innerHTML = "密码不合法！"
                 return false;
             }
         }
@@ -75,15 +77,15 @@
                         <h2>用户注册</h2>
                         <form th:action="@{/UserRegister}"  th:onsubmit="return onclickFun()">
                             <label >用户名：</label>
-<!--                            <span style="color: red;" th:text="${register_username}" th:if="${not #strings.isEmpty(register_username)}"></span>-->
+                            <span style="color: red;" th:text="${register_username}" th:if="${not #strings.isEmpty(register_username)}"></span>
                             <span style="color: red;" id="msg_username"></span>
-                            <input type="text" name="RegisterUsername"  id="username" class="form-control" placeholder="用户名长度：8~20字符">
+                            <input type="text" name="RegisterUsername"  id="username" class="form-control" placeholder="长度：8~20字符">
 
                             <label >密码：</label>
                             <span style="color: red;" id="msg_password"></span>
 <!--                            <span style="color: red;" th:text="${register_password}" th:if="${not #strings.isEmpty(register_password)}"></span>-->
 
-                            <input type="password" name="RegisterPassword" id="password" class="form-control" placeholder="密码长度：6~15字符">
+                            <input type="password" name="RegisterPassword" id="password" class="form-control" placeholder="长度：6~15字符，可包含字母，数字，下划线">
 
                             <label >确认密码：</label>
                             <span style="color: red;" id="msg_confirm"></span>

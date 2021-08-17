@@ -54,7 +54,7 @@ public class HelloController {
 //        for(Question question: q){
 //            System.out.println(question);
 //        }
-        examService.startExam("202108150001");
+
         return "hello";
     }
 
