@@ -20,3 +20,7 @@
 #做题结束
 ![(BRD4K1TT{A3G29{ 9$U~ N](https://user-images.githubusercontent.com/81791790/130323856-f9909478-408f-4fa9-aa59-f66327d521ec.png)
 
+#错题库
+![3Z0IB77KG{84DN38H)S}YU0](https://user-images.githubusercontent.com/81791790/130324074-2a86ed00-48d0-4cde-84bf-fdcd5526a544.png)
+![%PR}(_4 ZN(2GMB1{7@`FJ](https://user-images.githubusercontent.com/81791790/130324090-d2e23fae-c96f-4257-b1a2-38111c8537cd.png)
+![0W9U30P_Y%7A)LXDCT1 ONF](https://user-images.githubusercontent.com/81791790/130324102-d0481701-03a9-4419-9f2b-56702d8000ef.png)
